@@ -1,0 +1,176 @@
+/*Navbar Styles*/
+.nav-container{
+  display: flex;
+  margin: 20px 10% 0 10%;
+  border-bottom: 2px solid rgb(226, 223, 223);
+}
+.logo{
+  position: relative;
+  top: 12px;
+  height: 20px
+}
+.links{
+  position: relative;
+  display: inline-block;
+  top: 12px;
+  left: 25px;
+}
+.link{
+  text-decoration: none;
+  color: gray;
+  margin-right: 25px;
+  font-size: 15px;
+}
+.link:hover .appear-on-hover{
+  color: black;
+  display: block;
+}
+.appear-on-hover{
+  display: none;
+  position: relative;
+  top: 0;
+  left: 90px;
+  background-color: orangered;
+  padding: 5px;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+}
+.circle img{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.icon-img{
+  margin-left: 40%;
+  display: flex;
+  color: gray
+}
+.icon{
+  position: relative;
+  top: 15px;
+  height: 17px;
+  right: 30px;
+}
+
+
+/*Body styles*/
+.body-container{
+  display: flex;
+  margin: 50px 15px 0 15%;
+}
+.content{
+  width: 70%;
+}
+.right-side{
+  margin-top: 50px;
+}
+.right-side h1{
+  font-size: 30px;
+}
+.right-side p{
+  color: gray;
+}
+#title{
+  font-size: 13px;
+  font-weight: bold;
+}
+#text{
+  font-size: 14px;
+  width: 100%;
+  line-height: 20px;
+}
+.price-btn{
+  display: flex;
+}
+.price p{
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  margin-right: 12px;
+}
+.btn button{
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 7px;
+  margin-top: 20px;
+}
+.old-price{
+  text-decoration: line-through;
+  font-size: 15px;
+  margin-top: -10px;
+}
+.addtocart{
+  display: flex;
+  margin-top: 30px;
+}
+.add{
+  display: flex;
+  margin-right: 12px;
+  justify-content: space-between;
+  background-color: rgb(247, 244, 244);
+  border-radius: 5px;
+  padding: 0px 30px;
+}
+.add p{
+  margin-left: 10px;
+  padding: 0px 10px;
+}
+#minus{
+  height: 5px;
+  width: 10px;
+  position: relative;
+  top: 23px;
+  right: 15px
+}
+#plus{
+  height: 10px;
+  position: relative;
+  top: 20px;
+  left: 15px;
+}
+#num{
+  font-weight: bold;
+  color: black;
+}
+.cart button{
+  padding: 17px 50px;
+  background-color: rgb(245, 99, 31);
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+
+}
+#icon{
+  margin-right: 10px;
+}
+.pictures{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.pic1{
+  border-radius: 10px;
+  max-width: 20%;
+}
+.pic{
+  border-radius: 10px;
+  max-width: 100%;
+}
+.overlay{
+  border: 2px solid rgb(245, 99, 31);
+  border-radius: 10px;
+  position: fixed;
+  width: 78px;
+  height: 76px;
+  bottom: 39px;
+  left: 190px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.cart-btn img{
+  margin-right: 10px;
+  height: 13px;
+  color: black;
+}
