@@ -7,6 +7,10 @@ import img4 from '../images/image-product-4-thumbnail.jpg'
 import plus from '../images/icon-plus.svg'
 import minus from '../images/icon-minus.svg'
 import icon from '../images/icon-cart.svg'
+import right from '../images/icon-next.svg'
+import left from '../images/icon-previous.svg'
+import Cart from './Cart'
+
 
 
 export default function Body() {
@@ -23,9 +27,12 @@ export default function Body() {
                         <img src={img4} className="pic1" alt='smallShoe'/>
                     </div>
                 </div>
+                <img src={left} alt='leftchevron' className="chevron left"/>
+                <img src={right} alt='rightchevron' className="chevron right"/>
             </div>
 
             <div className="right-side">
+                <Cart/>
                 <div className="content">
                     <p id='title'>SNEAKER COMPANY</p>
                     <h1>Fall Limited Edition Sneakers</h1>

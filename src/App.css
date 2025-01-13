@@ -9,32 +9,38 @@
   top: 12px;
   height: 20px
 }
-.links{
-  position: relative;
-  display: inline-block;
-  top: 12px;
-  left: 25px;
+.avatar:hover{
+  border: 2px solid orangered;
+  border-radius: 50px;
 }
+.avatar{
+  border: 2px solid transparent;
+  border-radius: 50px; 
+}
+
 .link{
   text-decoration: none;
+  position: relative;
   color: gray;
   margin-right: 25px;
   font-size: 15px;
+  top: 15px;
+  left: 20px;
 }
-.link:hover .appear-on-hover{
+.link:hover{
   color: black;
+}
+.link::after {
+  content: '';
+  height: 2px;
+  background-color: orange;
+  position: absolute;
+  top: 37px;
+  left: 0px;
   display: block;
 }
-.appear-on-hover{
-  display: none;
-  position: relative;
-  top: 0;
-  left: 90px;
-  background-color: orangered;
-  padding: 5px;
-  /* border: 1px solid #ccc; */
-  border-radius: 5px;
-  /* box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); */
+.link:hover::after {
+  width: 100%;
 }
 .circle img{
   height: 50px;
@@ -42,7 +48,7 @@
   border-radius: 50%;
 }
 .icon-img{
-  margin-left: 40%;
+  margin-left: 43%;
   display: flex;
   color: gray
 }
@@ -125,11 +131,17 @@
   top: 23px;
   right: 15px
 }
+#minus:hover{
+  opacity: 0.7;
+}
 #plus{
   height: 10px;
   position: relative;
   top: 20px;
   left: 15px;
+}
+#plus:hover{
+  opacity: 0.7;
 }
 #num{
   font-weight: bold;
@@ -141,7 +153,9 @@
   border: none;
   border-radius: 5px;
   font-weight: bold;
-
+}
+.cart button:hover{
+  background-color: rgb(245, 99, 31, 0.7);
 }
 #icon{
   margin-right: 10px;
@@ -154,6 +168,9 @@
 .pic1{
   border-radius: 10px;
   max-width: 20%;
+}
+.pic1:hover{
+  opacity: 0.5;
 }
 .pic{
   border-radius: 10px;
@@ -173,4 +190,249 @@
   margin-right: 10px;
   height: 13px;
   color: black;
+}
+
+/*Hamburg Styles*/
+.hamburg-container{
+  display: none;
+}
+.hamburg{
+  display: none;
+}
+.close{
+  display: none;
+}
+.chevron{
+  display: none;
+}
+
+/*Cart Styles*/
+.cart-container{
+  position: absolute;
+  top: 71px;
+  right: 10%;
+  border-radius: 5px;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  box-shadow: 
+        -5px 7px 10px rgba(0, 0, 0, 0.1), /* Left shadow */
+         5px 7px 10px rgba(0, 0, 0, 0.1), /* Right shadow */
+         0 7px 10px rgba(0, 0, 0, 0.1);   /* Bottom shadow */
+}
+.cart-title{
+  columns: black;
+  font-weight: bolder;
+  margin-left: 20px;
+}
+.div-line{
+  border-bottom: 1px solid rgb(150, 147, 147, 0.3);
+}
+.cart-cont{
+  font-weight: bold;
+  text-align: center;
+  margin: 50px auto;
+}
+
+/*CartContent Styles*/
+.cartcontent-container{
+  position: relative;
+  bottom: 30px;
+  margin: 20px;
+}
+.details{
+  display: flex;
+}
+.cart-shoe{
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+.cart-text{
+  font-size: 12px;
+  text-align: left;
+  position: relative;
+  bottom: 12px;
+  left: 20px;
+}
+.trash-icon{
+  height: 15px;
+  width: 15px;
+  position: relative;
+  top: 12px;
+  left: 30px;
+}
+.cartcontent-container button{
+  padding: 15px 10px;
+  width: 100%;
+  background-color: rgb(247, 117, 42);
+  border: none;
+  border-radius: 5px;
+}
+.notif-num{
+  position: absolute;
+  right: 16.5%;
+  background-color: rgb(248, 103, 51);
+  color: white;
+  border-radius: 50px;
+  padding: 1px 4px;
+  font-size: 10px;
+}
+.ham-container{
+  display: none;
+}
+
+@media (max-width: 475px){
+  .hamburg{
+    position: relative;
+    bottom: 34px;
+    right: 100%;
+    padding-top: 50px;
+    margin-left: 0px;
+    display: block;
+  }
+  .close{
+    position: relative;
+    left: -30px;
+    top: 10px;
+    height: 20px;
+    width: 20px;
+    color: black;
+    display: block;
+  }
+  .ham-container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 25%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0;
+    bottom: 0;
+    padding: 40px;
+    display: none;
+  } 
+  .ham-link{
+    text-decoration: none;
+    color: black;
+    margin-top: 20px;
+  }
+  .chevron{
+    background-color: white;
+    border-radius: 50px;
+    padding: 10px;
+    position: absolute;
+    height: 10px;
+    display: block;
+    font-weight: bold;
+  }
+  .left{
+    top: 30%;
+    left: 30px;
+  }
+  .right{
+    top: 30%;
+    right: 20px;
+  }
+  .links, .pic1, .overlay{
+    display: none;
+  }
+  .logo{
+    margin-left: 30px;
+  }
+  .icon-img{
+    margin-left: 28%;
+  }
+  .nav-container{
+    border: none;
+  }
+  .body-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+
+    .pic{
+      border-radius: 0;
+      width: 100%;
+    }
+  }
+  
+  .left-side{
+    width: 100%;
+    height: 100%;
+  }
+  .right-side{
+    margin: 0px 30px;
+  }
+  .content{
+    width: 100%;
+  }
+  .cart-btn{
+    width: 100%;
+  }
+  .addtocart{
+    display: inline;
+  }
+  .old-price{
+    margin-left: 80%;
+    bottom: 30px;
+    position: relative;
+  }
+  .add{
+    margin-right: 0px;
+    margin-bottom: 10px;
+  }
+  .cart button:hover{
+    background-color: rgb(245, 99, 31, 0.7);
+  }
+  #minus, #plus{
+    opacity: 0.7;
+  }
+  .cart-container{
+    position: absolute;
+    top: 10%;
+    left: 6px;
+    border-radius: 5px;
+    width: 400px;
+    height: 250px;
+    background-color: white;
+    box-shadow:  0 7px 10px rgba(0, 0, 0, 0.1);  
+    display: none;
+  }
+  .cartcontent-container{
+    position: relative;
+    bottom: 15px;
+    margin: 20px;
+  }
+  .cart-text{
+    font-size: 12px;
+    text-align: left;
+    position: relative;
+    bottom: 12px;
+    left: 40px;
+  }
+  .trash-icon{
+    height: 15px;
+    width: 15px;
+    position: relative;
+    top: 12px;
+    left: 35%;
+  }
+  .details{
+    display: flex;
+    margin-bottom: 20px;
+  } 
+  .notif-num{
+    position: absolute;
+    right: 28%;
+    background-color: rgb(248, 103, 51);
+    color: white;
+    border-radius: 50px;
+    padding: 1px 4px;
+    font-size: 10px;
+  }
 }
