@@ -39,10 +39,10 @@ export default function Gallery({ closeFrame }) {
                 </div>
                 <div className="gallery-pictures">
                     <div className="gallery-overlay"></div>
-                    <img src={img1} className="pic1 active" alt='smallShoe' />
-                    <img src={img2} className="pic1 active" alt='smallShoe' />
-                    <img src={img3} className="pic1 active" alt='smallShoe' />
-                    <img src={img4} className="pic1 active" alt='smallShoe' />
+                    <img src={img1} className="pic1 active" alt='smallShoe' onClick={closeFrame}/>
+                    <img src={img2} className="pic1 active" alt='smallShoe' onClick={closeFrame}/>
+                    <img src={img3} className="pic1 active" alt='smallShoe' onClick={closeFrame}/>
+                    <img src={img4} className="pic1 active" alt='smallShoe' onClick={closeFrame}/>
                 </div>
                 <img src={left} alt='leftchevron' className="chevron left" onClick={prevSlide} />
                 <img src={right} alt='rightchevron' className="chevron right" onClick={nextSlide} />
