@@ -64,9 +64,7 @@
 .body-container{
   display: flex;
   margin: 50px 15px 0 15%;
-}
-.content{
-  width: 70%;
+  z-index: 1;
 }
 .right-side{
   margin-top: 50px;
@@ -179,18 +177,23 @@
 .overlay{
   border: 2px solid rgb(245, 99, 31);
   border-radius: 10px;
-  position: fixed;
+  position: absolute;
   width: 78px;
   height: 76px;
   bottom: 39px;
   left: 190px;
   background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1;
 }
 .cart-btn img{
   margin-right: 10px;
   height: 13px;
   color: black;
 }
+.content{
+  width: 70%;
+}
+
 
 /*Hamburg Styles*/
 .hamburg-container{
@@ -199,10 +202,7 @@
 .hamburg{
   display: none;
 }
-.close{
-  display: none;
-}
-.chevron{
+.ham-container{
   display: none;
 }
 
@@ -219,6 +219,7 @@
         -5px 7px 10px rgba(0, 0, 0, 0.1), /* Left shadow */
          5px 7px 10px rgba(0, 0, 0, 0.1), /* Right shadow */
          0 7px 10px rgba(0, 0, 0, 0.1);   /* Bottom shadow */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; 
 }
 .cart-title{
   columns: black;
@@ -278,9 +279,88 @@
   padding: 1px 4px;
   font-size: 10px;
 }
-.ham-container{
+.slider{
   display: none;
 }
+.gallery-container{
+  position: absolute;
+  left: 35%;
+  top: 10%;
+  z-index: 3;
+  width: 30%;
+  height: 30%;
+}
+.gallery-close{
+  height: 20px;
+  color: black;
+  position: relative;
+  left: 94%;
+}
+.gallery-overlay{
+  border: 2px solid rgb(245, 99, 31);
+  border-radius: 10px;
+  position: absolute;
+  width: 78px;
+  height: 76px;
+  bottom: 39px;
+  top: 450px;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 2;
+}
+.gallery-pictures{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 110%;
+}
+.gallery-blur-effect{
+  background-color: rgb(0, 0, 0, 0.8);
+  position: absolute;
+  width: 100%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+}
+.slider-content {
+  display: flex;
+}
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+.slide.active {
+  opacity: 1;
+}
+.slide img{
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+.chevron{
+  background-color: white;
+  border-radius: 50px;
+  padding: 20px;
+  position: absolute;
+  height: 15px;
+  display: block;
+  z-index: 1;
+}
+.left{
+  top: 100%;
+  left: -22px;
+}
+.right{
+  top: 100%;
+  right: -22px;
+}
+
+
 
 @media (max-width: 475px){
   .hamburg{
@@ -293,7 +373,7 @@
   }
   .close{
     position: relative;
-    left: -30px;
+    left: 0px;
     top: 10px;
     height: 20px;
     width: 20px;
@@ -311,12 +391,23 @@
     top: 0;
     bottom: 0;
     padding: 40px;
-    display: none;
+    z-index: 2;
   } 
   .ham-link{
     text-decoration: none;
     color: black;
     margin-top: 20px;
+  }
+  .blur-effect{
+    background-color: rgb(0, 0, 0, 0.8);
+    position: absolute;
+    height: 100%;
+    width: 200%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    z-index: 2;
   }
   .chevron{
     background-color: white;
@@ -326,13 +417,14 @@
     height: 10px;
     display: block;
     font-weight: bold;
+    z-index: 1;
   }
   .left{
-    top: 30%;
+    top: 40%;
     left: 30px;
   }
   .right{
-    top: 30%;
+    top: 40%;
     right: 20px;
   }
   .links, .pic1, .overlay{
@@ -353,14 +445,38 @@
     align-items: center;
     justify-content: center;
     margin: 0;
-    width: 100%;
 
     .pic{
-      border-radius: 0;
+      display: none;
+    }
+    .slider {
+      position: relative; 
       width: 100%;
+      height: 300px;
+      overflow: hidden;
+      display: block;
+    }
+    .slider-content {
+      display: flex;
+    }
+    .slide {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 0.5s ease;
+      opacity: 0;
+    }
+    .slide.active {
+      opacity: 1;
+    }
+    .slide img{
+      width: 100%;
+      display: block;
+      border-radius: 0;
     }
   }
-  
   .left-side{
     width: 100%;
     height: 100%;
@@ -434,5 +550,8 @@
     border-radius: 50px;
     padding: 1px 4px;
     font-size: 10px;
+  }
+  .gallery-container{
+    display: none;
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import img from '../images/image-product-1.jpg'
 import img1 from '../images/image-product-1-thumbnail.jpg'
 import img2 from '../images/image-product-2-thumbnail.jpg'
@@ -7,32 +7,50 @@ import img4 from '../images/image-product-4-thumbnail.jpg'
 import plus from '../images/icon-plus.svg'
 import minus from '../images/icon-minus.svg'
 import icon from '../images/icon-cart.svg'
-import right from '../images/icon-next.svg'
-import left from '../images/icon-previous.svg'
-import Cart from './Cart'
+import Slider from "./Slider";
+import Gallery from "./Gallery";
 
 
+export default function Body({ items, addToCart }) {
+    const [isShown, setIsShow] = useState(false)
+    const [quantity, setQuantity] = useState(1)
+    const handleClick = () => {
+        setIsShow(!isShown)
+    }
+    const closeFrame = () => {
+        setIsShow(false)
+    }
+    const handleIncrease = () => {
+        setQuantity((prev) => prev + 1);
+    };
 
-export default function Body() {
+    const handleDecrease = () => {
+        setQuantity((prev) => (prev > 1 ? prev - 1 : 1)); 
+    };
+
     return (
         <div className="body-container">
             <div className="left-side">
                 <div className="content">
-                    <img src={img} className="pic" alt='bigShoe'/>
+                    {isShown &&
+                        <div>
+                            <Gallery closeFrame={closeFrame} />
+                        </div>}
+                    <div className="img-list">
+                        <img src={img} className="pic" alt='bigShoe' onClick={handleClick} />
+                        <Slider />
+                    </div>
                     <div className="pictures">
                         <div className="overlay"></div>
-                        <img src={img1} className="pic1" alt='smallShoe'/>
-                        <img src={img2} className="pic1" alt='smallShoe'/>
-                        <img src={img3} className="pic1" alt='smallShoe'/>
-                        <img src={img4} className="pic1" alt='smallShoe'/>
+                        <img src={img1} className="pic1" alt='smallShoe' />
+                        <img src={img2} className="pic1" alt='smallShoe' />
+                        <img src={img3} className="pic1" alt='smallShoe' />
+                        <img src={img4} className="pic1" alt='smallShoe' />
                     </div>
                 </div>
-                <img src={left} alt='leftchevron' className="chevron left"/>
-                <img src={right} alt='rightchevron' className="chevron right"/>
             </div>
 
             <div className="right-side">
-                <Cart/>
                 <div className="content">
                     <p id='title'>SNEAKER COMPANY</p>
                     <h1>Fall Limited Edition Sneakers</h1>
@@ -54,13 +72,13 @@ export default function Body() {
 
                     <div className="addtocart">
                         <div className="add">
-                            <img src={minus} id='minus'alt='minussign'/>
-                            <p id='num'>0</p>
-                            <img src={plus} id='plus' alt='plusShoe'/>
+                            <img src={minus} id='minus' alt='minussign' onClick={handleDecrease}/>
+                            <p id='num'>{quantity}</p>
+                            <img src={plus} id='plus' alt='plusShoe' onClick={handleIncrease}/>
                         </div>
                         <div className="cart">
-                            <button className="cart-btn">
-                                <img src={icon} alt='carticon'/>
+                            <button className="cart-btn" onClick={() => addToCart({ id: 1, name: "Sneaker", price: 125, img: img1, quantity: quantity })}>
+                                <img src={icon} alt='carticon' />
                                 Add to cart
                             </button>
                         </div>

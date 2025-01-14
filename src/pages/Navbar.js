@@ -5,23 +5,22 @@ import logo from '../images/logo.svg'
 import ham from '../images/icon-menu.svg'
 import { Link } from 'react-router-dom';
 import Hamburg from './Hamburg';
+import Cart from './Cart';
 
 
-export default function Navbar() {
+export default function Navbar({ cartItems }) {
     const [isOpen, setOpen] = useState(false)
-    const [menuClass, setMenuClass] = useState("menu hidden")
-    const [burgIcon, setBurgIcon] = useState("burgIcon unclicked")
+    const [isShown, setIsShown] = useState(false)
     const toggleHamburg = () => {
-        if (!isOpen){
-            setMenuClass("menu visible")
-            setBurgIcon("burgIcon clicked")
-        }
-        else{
-            setMenuClass("menu hidden")
-            setBurgIcon("burgIcon unclicked")
-        }
         setOpen(!isOpen)
     }
+    const closeHamburg = () => {
+        setOpen(false)
+    }
+    const handleCart = () => {
+        setIsShown(!isShown)
+    }
+    
     return (
         <div className='nav-container'>
             <img src={logo} className='logo' alt='logo' />
@@ -33,18 +32,29 @@ export default function Navbar() {
                 <Link to="/contact" className="link">Contact</Link>
             </div>
             <div className='icon-img'>
-                <img src={icon} className='icon' alt='carticon' />
+                {isShown && (
+                    <div> 
+                        <Cart items={cartItems}/> 
+                    </div>
+                )}
+                <div onClick={handleCart}>
+                     <img src={icon} className='icon' alt='carticon'/>
+                </div>
                 <div className='notif'>
-                    <p className='notif-num'>3</p>
+                    <p className='notif-num'>
+                        {cartItems.reduce((total, item) => total + item.quantity, 0)}
+                    </p>
                 </div>
                 <div className='circle'>
                     <img src={img} alt='useravatar' className='avatar' />
                 </div>
             </div>
-            <img src={ham} alt='hamburgicon' className='hamburg' />
-            <div onClick={toggleHamburg}>
-                <Hamburg/>
-            </div>
+            <img src={ham} alt='hamburgicon' className='hamburg' onClick={toggleHamburg} />
+            {isOpen &&
+                <div >
+                    <Hamburg closeHamburg={closeHamburg} />
+                </div>
+            }
         </div>
     )
 }
