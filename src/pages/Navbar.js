@@ -8,7 +8,7 @@ import Hamburg from './Hamburg';
 import Cart from './Cart';
 
 
-export default function Navbar({ cartItems }) {
+export default function Navbar({ cartItems, removeFromCart }) {
     const [isOpen, setOpen] = useState(false)
     const [isShown, setIsShown] = useState(false)
     const toggleHamburg = () => {
@@ -34,7 +34,7 @@ export default function Navbar({ cartItems }) {
             <div className='icon-img'>
                 {isShown && (
                     <div> 
-                        <Cart items={cartItems}/> 
+                        <Cart items={cartItems} removeFromCart={removeFromCart}/> 
                     </div>
                 )}
                 <div onClick={handleCart}>

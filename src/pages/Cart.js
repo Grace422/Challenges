@@ -1,7 +1,7 @@
 import React from "react";
 import CartContent from "./CartContent";
 
-export default function Cart({ items }) {
+export default function Cart({ items, removeFromCart }) {
     return (
         <div className="cart-container">
             <p className="cart-title">Cart</p>
@@ -12,7 +12,7 @@ export default function Cart({ items }) {
                 </p>
             ) : (
                 <div>
-                    <CartContent/>
+                    <CartContent items={items} removeFromCart={removeFromCart}/>
                 </div>
             )}
         </div>

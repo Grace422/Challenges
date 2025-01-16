@@ -14,6 +14,7 @@ import close from '../images/icon-close.svg'
 
 export default function Gallery({ closeFrame }) {
     const slides = [img, bimg1, bimg2, bimg3]
+    const thumbnails = [img1, img2, img3, img4];
     const [currentIndex, setCurrentIndex] = useState(0);
     const nextSlide = () => {
         const nextIndex = (currentIndex + 1) % slides.length;
@@ -22,6 +23,9 @@ export default function Gallery({ closeFrame }) {
     const prevSlide = () => {
         const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
         setCurrentIndex(prevIndex);
+    };
+    const handleThumbnailClick = (index) => {
+        setCurrentIndex(index);
     };
     return (
         <div>
@@ -38,16 +42,21 @@ export default function Gallery({ closeFrame }) {
                     ))}
                 </div>
                 <div className="gallery-pictures">
-                    <div className="gallery-overlay"></div>
-                    <img src={img1} className="pic1 active" alt='smallShoe' onClick={closeFrame}/>
-                    <img src={img2} className="pic1 active" alt='smallShoe' onClick={closeFrame}/>
-                    <img src={img3} className="pic1 active" alt='smallShoe' onClick={closeFrame}/>
-                    <img src={img4} className="pic1 active" alt='smallShoe' onClick={closeFrame}/>
+                    {thumbnails.map((thumb, index) => (
+                        <div 
+                            key={index} 
+                            className={`thumbnail-container ${index === currentIndex ? "active" : ""}`} 
+                            onClick={() => handleThumbnailClick(index)}
+                        >
+                            <img src={thumb} className={`gallery-pic ${index === currentIndex ? "highlight" : ""}`} alt={`smallShoe ${index}`} />
+                            {index === currentIndex && <div className="overlay"></div>}
+                        </div>
+                    ))}
                 </div>
                 <img src={left} alt='leftchevron' className="chevron left" onClick={prevSlide} />
                 <img src={right} alt='rightchevron' className="chevron right" onClick={nextSlide} />
             </div>
-            <div className="gallery-blur-effect"></div>
+            <div className="gallery-blur-effect"  onClick={closeFrame}></div>
         </div>
     )
 }

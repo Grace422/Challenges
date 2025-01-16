@@ -66,6 +66,21 @@
   margin: 50px 15px 0 15%;
   z-index: 1;
 }
+.pic{
+  border-radius: 10px;
+  max-width: 100%;
+}
+.overlay{
+  border: 2px solid rgb(245, 99, 31);
+  border-radius: 10px;
+  position: absolute;
+  width: 78px;
+  height: 76px;
+  bottom: 39px;
+  left: 190px;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1;
+}
 .right-side{
   margin-top: 50px;
 }
@@ -165,7 +180,7 @@
 }
 .pic1{
   border-radius: 10px;
-  max-width: 20%;
+  width: 20%;
 }
 .pic1:hover{
   opacity: 0.5;
@@ -196,15 +211,10 @@
 
 
 /*Hamburg Styles*/
-.hamburg-container{
+.hamburg-container, .hamburg, .ham-container, .slider{
   display: none;
 }
-.hamburg{
-  display: none;
-}
-.ham-container{
-  display: none;
-}
+
 
 /*Cart Styles*/
 .cart-container{
@@ -239,7 +249,7 @@
 .cartcontent-container{
   position: relative;
   bottom: 30px;
-  margin: 20px;
+  margin: 50px 20px 10px 20px;
 }
 .details{
   display: flex;
@@ -279,9 +289,6 @@
   padding: 1px 4px;
   font-size: 10px;
 }
-.slider{
-  display: none;
-}
 .gallery-container{
   position: absolute;
   left: 35%;
@@ -295,17 +302,6 @@
   color: black;
   position: relative;
   left: 94%;
-}
-.gallery-overlay{
-  border: 2px solid rgb(245, 99, 31);
-  border-radius: 10px;
-  position: absolute;
-  width: 78px;
-  height: 76px;
-  bottom: 39px;
-  top: 450px;
-  background-color: rgba(255, 255, 255, 0.8);
-  z-index: 2;
 }
 .gallery-pictures{
   display: flex;
@@ -322,8 +318,34 @@
   left: 0;
   z-index: 2;
 }
+.thumbnail-container {
+  position: relative;
+}
+.thumbnail-container .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  display: none;
+}
+
+.thumbnail-container.active .overlay {
+  display: block;
+}
+.gallery-pic {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px; 
+}
+.gallery-pic:hover{
+  opacity: 0.5;
+}
 .slider-content {
   display: flex;
+  max-width: 100%;
 }
 .slide {
   width: 100%;
@@ -362,6 +384,7 @@
 
 
 
+
 @media (max-width: 475px){
   .hamburg{
     position: relative;
@@ -391,7 +414,7 @@
     top: 0;
     bottom: 0;
     padding: 40px;
-    z-index: 2;
+    z-index: 3;
   } 
   .ham-link{
     text-decoration: none;
@@ -508,6 +531,14 @@
   #minus, #plus{
     opacity: 0.7;
   }
+  .avatar:hover{
+    border: 2px solid orangered;
+    border-radius: 50px;
+  }
+  .avatar{
+    border: 2px solid transparent;
+    border-radius: 50px; 
+  }
   .cart-container{
     position: absolute;
     top: 10%;
@@ -516,13 +547,14 @@
     width: 400px;
     height: 250px;
     background-color: white;
-    box-shadow:  0 7px 10px rgba(0, 0, 0, 0.1);  
-    display: none;
+    box-shadow:  0 7px 10px rgba(0, 0, 0, 0.1); 
+    z-index: 2;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; 
   }
   .cartcontent-container{
     position: relative;
     bottom: 15px;
-    margin: 20px;
+    margin: 45px 20px 20px 20px;
   }
   .cart-text{
     font-size: 12px;

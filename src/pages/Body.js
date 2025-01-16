@@ -4,16 +4,22 @@ import img1 from '../images/image-product-1-thumbnail.jpg'
 import img2 from '../images/image-product-2-thumbnail.jpg'
 import img3 from '../images/image-product-3-thumbnail.jpg'
 import img4 from '../images/image-product-4-thumbnail.jpg'
+// import bimg1 from '../images/image-product-2.jpg'
+// import bimg2 from '../images/image-product-3.jpg'
+// import bimg3 from '../images/image-product-4.jpg'
 import plus from '../images/icon-plus.svg'
 import minus from '../images/icon-minus.svg'
 import icon from '../images/icon-cart.svg'
-import Slider from "./Slider";
 import Gallery from "./Gallery";
+import Slider from './Slider'
 
 
 export default function Body({ items, addToCart }) {
     const [isShown, setIsShow] = useState(false)
     const [quantity, setQuantity] = useState(1)
+    // const slides = [img, bimg1, bimg2, bimg3]
+    // const thumbnails = [img1, img2, img3, img4];
+    // const [currentIndex, setCurrentIndex] = useState(0);
     const handleClick = () => {
         setIsShow(!isShown)
     }
@@ -25,8 +31,11 @@ export default function Body({ items, addToCart }) {
     };
 
     const handleDecrease = () => {
-        setQuantity((prev) => (prev > 1 ? prev - 1 : 1)); 
+        setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
     };
+    // const handleThumbnailClick = (index) => {
+    //     setCurrentIndex(index);
+    // };
 
     return (
         <div className="body-container">
@@ -72,12 +81,12 @@ export default function Body({ items, addToCart }) {
 
                     <div className="addtocart">
                         <div className="add">
-                            <img src={minus} id='minus' alt='minussign' onClick={handleDecrease}/>
+                            <img src={minus} id='minus' alt='minussign' onClick={handleDecrease} />
                             <p id='num'>{quantity}</p>
-                            <img src={plus} id='plus' alt='plusShoe' onClick={handleIncrease}/>
+                            <img src={plus} id='plus' alt='plusShoe' onClick={handleIncrease} />
                         </div>
                         <div className="cart">
-                            <button className="cart-btn" onClick={() => addToCart({ id: 1, name: "Sneaker", price: 125, img: img1, quantity: quantity })}>
+                            <button className="cart-btn" onClick={() => addToCart({ id: 1, name: "Fall Limited Edition Sneakers", price: 125, image: img1, quantity: quantity })}>
                                 <img src={icon} alt='carticon' />
                                 Add to cart
                             </button>

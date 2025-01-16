@@ -12,17 +12,47 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (item) => {
-      setCartItems([...cartItems, item]);
+    setCartItems((prevItems) => {
+      const existingItem = prevItems.find((i) => i.id === item.id);
+
+      if (existingItem) {
+        // Update the quantity of the existing product
+        return prevItems.map((i) =>
+          i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
+        );
+      } else {
+        // Add a new product to the cart
+        return [...prevItems, { ...item, quantity: item.quantity }];
+      }
+    });
   };
+  const removeFromCart = (itemId) => {
+    setCartItems((prevItems) => {
+        const item = prevItems.find((i) => i.id === itemId);
+
+        if (item) {
+            if (item.quantity > 1) {
+                return prevItems.map((i) =>
+                    i.id === itemId ? { ...i, quantity: i.quantity - 1 } : i
+                );
+            } else {
+                return prevItems.filter((i) => i.id !== itemId);
+            }
+        }
+
+        return prevItems;  
+    });
+};
+
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar cartItems={cartItems}/>
+        <Navbar cartItems={cartItems} removeFromCart={removeFromCart}/>
         <Routes>
-          <Route path='/' element={<Body items={cartItems} addToCart={addToCart}/>}/>
+          <Route path='/' element={<Body items={cartItems} addToCart={addToCart} removeFromCart={removeFromCart}/>}/>
           <Route path="women" element={<Women />} />
           <Route path="men" element={<Men />} />
-          <Route path="collections" element={<Body items={cartItems} addToCart={addToCart}/>} />
+          <Route path="collections" element={<Body items={cartItems} addToCart={addToCart} removeFromCart={removeFromCart}/>} />
           <Route path="contact" element={<Contact />} />
           <Route path="about" element={<About />} />
         </Routes>
