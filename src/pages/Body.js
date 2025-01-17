@@ -4,9 +4,9 @@ import img1 from '../images/image-product-1-thumbnail.jpg'
 import img2 from '../images/image-product-2-thumbnail.jpg'
 import img3 from '../images/image-product-3-thumbnail.jpg'
 import img4 from '../images/image-product-4-thumbnail.jpg'
-// import bimg1 from '../images/image-product-2.jpg'
-// import bimg2 from '../images/image-product-3.jpg'
-// import bimg3 from '../images/image-product-4.jpg'
+import bimg1 from '../images/image-product-2.jpg'
+import bimg2 from '../images/image-product-3.jpg'
+import bimg3 from '../images/image-product-4.jpg'
 import plus from '../images/icon-plus.svg'
 import minus from '../images/icon-minus.svg'
 import icon from '../images/icon-cart.svg'
@@ -17,9 +17,7 @@ import Slider from './Slider'
 export default function Body({ items, addToCart }) {
     const [isShown, setIsShow] = useState(false)
     const [quantity, setQuantity] = useState(1)
-    // const slides = [img, bimg1, bimg2, bimg3]
-    // const thumbnails = [img1, img2, img3, img4];
-    // const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentImage, setCurrentImage] = useState(img);
     const handleClick = () => {
         setIsShow(!isShown)
     }
@@ -33,9 +31,9 @@ export default function Body({ items, addToCart }) {
     const handleDecrease = () => {
         setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
     };
-    // const handleThumbnailClick = (index) => {
-    //     setCurrentIndex(index);
-    // };
+    const handleThumbnailClick = (image) => {
+        setCurrentImage(image);
+    };
 
     return (
         <div className="body-container">
@@ -46,15 +44,18 @@ export default function Body({ items, addToCart }) {
                             <Gallery closeFrame={closeFrame} />
                         </div>}
                     <div className="img-list">
-                        <img src={img} className="pic" alt='bigShoe' onClick={handleClick} />
+                        <img src={currentImage} className="pic" alt='bigShoe' onClick={handleClick} />
                         <Slider />
                     </div>
                     <div className="pictures">
-                        <div className="overlay"></div>
-                        <img src={img1} className="pic1" alt='smallShoe' />
-                        <img src={img2} className="pic1" alt='smallShoe' />
-                        <img src={img3} className="pic1" alt='smallShoe' />
-                        <img src={img4} className="pic1" alt='smallShoe' />
+                        <img src={img1} className={`pic1 ${currentImage === img ? 'active' : ''}`} 
+                             alt='smallShoe' onClick={() => handleThumbnailClick(img)}/>
+                        <img src={img2} className={`pic1 ${currentImage === bimg1 ? 'active' : ''}`} 
+                             alt='smallShoe' onClick={() => handleThumbnailClick(bimg1)}/>
+                        <img src={img3} className={`pic1 ${currentImage === bimg2 ? 'active' : ''}`} 
+                             alt='smallShoe' onClick={() => handleThumbnailClick(bimg2)}/>
+                        <img src={img4} className={`pic1 ${currentImage === bimg3 ? 'active' : ''}`} 
+                             alt='smallShoe' onClick={() => handleThumbnailClick(bimg3)}/>
                     </div>
                 </div>
             </div>
